@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+{% block body %}
+
+    {% if listaUsers and listaUsers|length >0 %}
+        <table>
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>EMAIL</td>
+                    <td>NOMBRES</td>
+                    <td>APELLIDOS</td>
+                    <td>TIPO</td>
+                </tr>
+            </thead>
+            <tbody>
+        {% for user in listaUsers %}
+            <tr>
+                    <td>{{user.id}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.nombres}}</td>
+                    <td>{{user.apellidos}}</td>
+                    <td>{{user.tipo}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+         </table>
+    {% else %}
+        <p>No existen usuarios registrados</p>
+    {% endif %}
+        <a href="{{path('app_register')}}" class="btn btn-success" role="button">Agregar usuario</a>
+        <a href="{{path('app_logout')}}">Cerrar sesion</a>
+{% endblock %}

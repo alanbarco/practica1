@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CreatorDashboardController!{% endblock %}
+
+{% block body %}
+    {% if listaCursos and listaCursos|length >0 %}
+        <table>
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>TITULO</td>
+                    <td>DESCRIPCION</td>
+                    <td>ESTADO</td>
+                    <td>OPCIONES</td>
+                </tr>
+            </thead>
+            <tbody>
+        {% for curso in listaCursos %}
+            <tr>
+                    <td>{{curso.id}}</td>
+                    <td>{{curso.nombre}}</td>
+                    <td>{{curso.descripcion}}</td>
+                    <td>{{curso.estado}}</td>
+                    <td>
+                        
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+         </table>
+    {% else %}
+        <p>No existen cursos registrados</p>
+    {% endif %}
+        <a href="{{path('app_creator_dashboard_register')}}">Agregar curso</a>
+        <a href="{{path('app_logout')}}">Cerrar sesion</a>
+{% endblock %}
